@@ -1,0 +1,9 @@
+.cat-info {
+  width: 100%;
+  display: flex;
+}
+
+.cat-info img {
+  width: 500px;
+  margin-right: 20px;
+}
