@@ -6,4 +6,21 @@
 .cat-info img {
   width: 500px;
   margin-right: 20px;
+  margin-top: 10px;
+}
+
+.loader {
+  display: none;
+}
+
+.breed-select {
+  display: none;
+}
+
+.loader.visible {
+  display: block;
+}
+
+.breed-select.loaded {
+  display: block;
 }

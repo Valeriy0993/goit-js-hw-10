@@ -1,6 +1,6 @@
-import { fetchBreeds, fetchCatByBreed } from './cat-api';
 import SlimSelect from 'slim-select';
 import Notiflix from 'notiflix';
+import { fetchBreeds, fetchCatByBreed } from './cat-api';
 
 const breedSelect = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
@@ -16,6 +16,7 @@ async function init() {
     showError();
   } finally {
     hideLoader();
+    breedSelect.classList.add('loaded'); // Додаємо клас для відображення вікна вибору після завантаження даних
   }
 }
 
@@ -34,6 +35,7 @@ async function handleBreedSelect() {
   const selectedBreedId = breedSelect.value;
 
   try {
+    breedSelect.classList.remove('loaded'); // Приховуємо вікно вибору перед завантаженням даних
     showLoader();
     error.style.display = 'none';
     catInfo.innerHTML = '';
@@ -44,6 +46,7 @@ async function handleBreedSelect() {
   } catch (e) {
     showError();
   } finally {
+    breedSelect.classList.add('loaded'); // Відображаємо вікно вибору після завантаження даних
     hideLoader();
     loader.innerText = '';
   }

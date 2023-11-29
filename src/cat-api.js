@@ -1,17 +1,16 @@
 import axios from 'axios';
 
-const apiKey =
+const APIKEY =
   'live_y0ccoOlM9bib0JmMZVUgfi3CUgB7S20dLS3NrmmjPXafVpdBzscowbsluEkMXu6Z';
-axios.defaults.headers.common['x-api-key'] = apiKey;
+axios.defaults.headers.common['x-api-key'] = APIKEY;
+
+const BASEURL = 'https://api.thecatapi.com/v1/';
 
 export async function fetchBreeds() {
   try {
-    showLoader();
-    const response = await axios.get('https://api.thecatapi.com/v1/breeds');
-    hideLoader();
+    const response = await axios.get(`${BASEURL}breeds`);
     return response.data;
   } catch (error) {
-    hideLoader();
     console.error('Error fetching breeds:', error);
     throw error;
   }
@@ -19,25 +18,12 @@ export async function fetchBreeds() {
 
 export async function fetchCatByBreed(breedId) {
   try {
-    showLoader();
     const response = await axios.get(
-      `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`
+      `${BASEURL}images/search?breed_ids=${breedId}`
     );
-    hideLoader();
     return response.data[0];
   } catch (error) {
-    hideLoader();
     console.error('Error fetching cat by breed:', error);
     throw error;
   }
-}
-
-function showLoader() {
-  const loader = document.querySelector('.loader');
-  loader.classList.add('visible');
-}
-
-function hideLoader() {
-  const loader = document.querySelector('.loader');
-  loader.classList.remove('visible');
 }
