@@ -16,7 +16,7 @@ async function init() {
     showError();
   } finally {
     hideLoader();
-    breedSelect.classList.add('loaded'); // Додаємо клас для відображення вікна вибору після завантаження даних
+    breedSelect.classList.add('loaded');
   }
 }
 
@@ -35,7 +35,7 @@ async function handleBreedSelect() {
   const selectedBreedId = breedSelect.value;
 
   try {
-    breedSelect.classList.remove('loaded'); // Приховуємо вікно вибору перед завантаженням даних
+    breedSelect.classList.remove('loaded');
     showLoader();
     error.style.display = 'none';
     catInfo.innerHTML = '';
@@ -46,7 +46,7 @@ async function handleBreedSelect() {
   } catch (e) {
     showError();
   } finally {
-    breedSelect.classList.add('loaded'); // Відображаємо вікно вибору після завантаження даних
+    breedSelect.classList.add('loaded');
     hideLoader();
     loader.innerText = '';
   }
